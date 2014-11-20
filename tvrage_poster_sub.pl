@@ -2,8 +2,21 @@
 use warnings;
 use LWP::Simple;
 use XML::Simple;
+
+# Check so that all arguments needed are there
+if (@ARGV == 0) {
+print "Please add the url to a tvrage tv show. \n";
+exit;
+}
+if ($ARGV[0] !~ /^http/i){
+print "You must enter an url beginning with http. \n";
+exit;
+}
+
+# Set the url value to the argument passed from commandline
 my $url=$ARGV[0];
 
+# Subroutine for tvrage poster url
 sub tvrageposter {
    my $imageid="not found";
    my $content = get $url;
@@ -15,5 +28,10 @@ sub tvrageposter {
    print "No Imageid found \n";
    }
 }
+
+# Use function with the argument passed to it
 print tvrageposter;
+
+# Exit
 exit;
+
