@@ -2,6 +2,7 @@
 use warnings;
 use LWP::Simple;
 use XML::Simple;
+# Get the tvshow poster url from tvrage url
    my $imageid="1";
    my $content = get $ARGV[0];
    if ($content =~ /src='http:\/\/images.tvrage.com\/shows\/(.*?)'><\/div>/){
