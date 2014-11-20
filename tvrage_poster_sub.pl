@@ -6,7 +6,7 @@ use XML::Simple;
 
 # Check so that all arguments needed are there
 if (@ARGV == 0) {
-print "Please add the url to a tvrage tv show. \n Usage: ./tvrage_poster_sub.pl http://www.tvrage.com/showname \n";
+print "\nPlease add the url to a tvrage tv show. \n\nUsage: ./tvrage_poster_sub.pl http://www.tvrage.com/showname\n\n";
 exit;
 }
 if ($ARGV[0] !~ /^http/i){
