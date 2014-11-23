@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use LWP::Simple;
+
+# Usage: Enter the url to an image on the web and it will store it the scripts location.
+# Example: ./getstore_image http://url.com/image.jpg
+
+my $imageurl=$ARGV[0];
+
+sub main {
+
+        print "Downloading...\n";
+
+        my $name = $imageurl;
+
+        $name =~ s/^.*\/(.*?)$/$1/gi;
+
+        print "Filename: $name\n";
+
+        my $code = getstore($imageurl, $name);
+
+        if ($code == 200) {
+                print "Success\n";
+        }
+        elsif ($code == 404){
+                print "Error 404 No such file\n";
+        }
+        else {
+                print "Failed\n";
+        }
+
+        print "\n\nFinished\n";
+}
+
+main();
