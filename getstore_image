@@ -38,6 +38,7 @@ sub main {
         }
         elsif ($code == 404){
                 print "Error 404 No such file\n";
+                exit;
         }
         else {
                 print "Failed $!\n";
