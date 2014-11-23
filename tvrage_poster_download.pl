@@ -16,6 +16,9 @@ sub tvr {
                 print "You must enter a link with http \n";
                 exit;
                         }
+        if ($ARGV[0] !~ m/^.*tvrage.*$/i){
+                print "I do not recognize that link to be a tvrage url, will try anyway...\n$
+                        }
 
 # Get the poster id and make download link.
         my $imageid="1";
@@ -27,11 +30,25 @@ sub tvr {
         # Download the poster
         my $name = $imageid;
         $name =~ s/^.*\/(.*?)$/$1/gi;
-        getstore($imageid, "$location/$name");
+        my $code = getstore($imageid, "$location/$name");
+
+        if ($code == 200) {
+                print "Success\n";
+        }
+        elsif ($code == 404){
+                print "Error 404 No such file\n";
+                exit;
+        }
+        else {
+                print "Failed $!\n";
+                exit;
+        }
+        print "Finished downloading $name to $location\n";
+
         }elsif ($imageid==1){
         print "No Imageid found \n";
         }
 }
 
-tvr();
 
+tvr();
