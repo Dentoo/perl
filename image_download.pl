@@ -4,7 +4,7 @@ use warnings;
 use LWP::Simple;
 
 # Downloads either any image from url or the tvrage tv show image by the tvshow url
-# Usage: Enter the url to an image on the web and it will store it the scripts location.
+# Usage: Enter the url to an image on the web and it will download it.
 # Example: ./image_download.pl 'http://url.com/image.jpg'
 # (Also works on Facebook image url's)
 # Enter url to tvrage show and it returns the url to and downloads the tvshow poster
