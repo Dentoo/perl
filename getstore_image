@@ -4,23 +4,29 @@ use warnings;
 use LWP::Simple;
 
 # Usage: Enter the url to an image on the web and it will store it the scripts location.
-# Example: ./getstore_image http://url.com/image.jpg
+# Example: ./getstore_image 'http://url.com/image.jpg'
+# (Also works on Facebook image url's)
 
 my $imageurl=$ARGV[0];
+my $epoc = time();
 
 sub main {
-        if ($imageurl =~ m/.*\.(jpg|png|gif)$/i)
+        if ($imageurl =~ m/.*(\.(jpg|png|gif)$|gda__=.*$)/i)
         {
-
 
         print "Downloading...\n";
 
         my $name = $imageurl;
 
+        # Remove all except the actual filename from url
         $name =~ s/^.*\/(.*?)$/$1/gi;
+
+        # If it is a facebook image url give it a random filename
+        $name =~ s/^.*__gda__.*$/$epoc.jpg/i;
 
         print "Filename: $name\n";
 
+        # Download the image file
         my $code = getstore($imageurl, $name);
 
         if ($code == 200) {
@@ -30,14 +36,14 @@ sub main {
                 print "Error 404 No such file\n";
         }
         else {
-                print "Failed\n";
+                print "Failed $!\n";
         }
 
         print "\n\nFinished\n";
         }
         else
         {
-                print "Your url must end with .jpg, .png or .gif\n";
+                print "Your url must end with .jpg, .png or .gif or be a Facebook image url\n";
         }
 }
 
