@@ -58,7 +58,7 @@ sub tvr {
 
 sub image {
 
-# Download tvrage poster for tv show to a specified location
+# Download image to a specified location
         my $location = "/root/test/general/downloads"; # Change to your download dir
 
 	my $imageurl=$ARGV[0];
