@@ -1,7 +1,10 @@
 #!/usr/bin/env perl
+use strict;
 use warnings;
 use LWP::Simple;
-use XML::Simple;
+
+# Enter url to tvrage show and it returns the url to the tvshow poster
+sub tvr {
 # Check so that all arguments needed are there
 if (@ARGV == 0) {
 print "You must add a link to a tvrage tv show \n";
@@ -21,3 +24,6 @@ exit;
    }elsif ($imageid==1){
    print "No Imageid found \n";
    }
+}
+
+tvr()
