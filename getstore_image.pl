@@ -4,7 +4,7 @@ use warnings;
 use LWP::Simple;
 
 # Usage: Enter the url to an image on the web and it will store it the scripts location.
-# Example: ./getstore_image 'http://url.com/image.jpg'
+# Example: ./getstore_image.pl 'http://url.com/image.jpg'
 # (Also works on Facebook image url's)
 
 #### Config ######
