@@ -9,6 +9,9 @@ use LWP::Simple;
 my $imageurl=$ARGV[0];
 
 sub main {
+        if ($imageurl =~ m/.*\.(jpg|png|gif)$/i)
+        {
+
 
         print "Downloading...\n";
 
@@ -31,6 +34,11 @@ sub main {
         }
 
         print "\n\nFinished\n";
+        }
+        else
+        {
+                print "Your url must end with .jpg, .png or .gif\n";
+        }
 }
 
 main();
