@@ -17,7 +17,7 @@ my $imageurl=$ARGV[0];
 my $epoc = time();
 
 sub main {
-        if ($imageurl =~ m/.*(\.(jpg|png|gif)$|gda__=.*$)/i)
+        if ($imageurl =~ m/.*(\.(jpg|png|gif)$|gda__=.*$|.*jpg\?oh=.*$)/i)
         {
 
         print "Downloading...\n";
@@ -28,7 +28,7 @@ sub main {
         $name =~ s/^.*\/(.*?)$/$1/gi;
 
         # If it is a facebook image url give it a random filename
-        $name =~ s/^.*__gda__.*$/$epoc.jpg/i;
+        $name =~ s/^.*(__gda__|jpg\?oh=).*$/$epoc.jpg/i;
 
         print "Filename: $name\n";
 
@@ -43,9 +43,10 @@ sub main {
         }
         else {
                 print "Failed $!\n";
+                exit;
         }
 
-        print "\n\nFinished\n";
+        print "Finished downloading $name to $dir\n";
         }
         else
         {
