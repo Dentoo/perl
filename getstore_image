@@ -30,8 +30,6 @@ sub main {
         # If it is a facebook image url give it a random filename
         $name =~ s/^.*(__gda__|jpg\?oh=).*$/$epoc.jpg/i;
 
-        print "Filename: $name\n";
-
         # Download the image file
         my $code = getstore($imageurl, "$dir/$name");
 
