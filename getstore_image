@@ -3,9 +3,15 @@ use strict;
 use warnings;
 use LWP::Simple;
 
-# Usage: Enter the url to an image on the web and it will store it.
+# Usage: Enter the url to an image on the web and it will store it the scripts location.
 # Example: ./getstore_image 'http://url.com/image.jpg'
 # (Also works on Facebook image url's)
+
+#### Config ######
+
+my $dir = "/root/test/new/downloads";  # Image storage dir
+
+##################
 
 my $imageurl=$ARGV[0];
 my $epoc = time();
@@ -27,7 +33,7 @@ sub main {
         print "Filename: $name\n";
 
         # Download the image file
-        my $code = getstore($imageurl, $name);
+        my $code = getstore($imageurl, "$dir/$name");
 
         if ($code == 200) {
                 print "Success\n";
